@@ -1,0 +1,586 @@
+// MIXINS
+// use for light text on dark backgrounds
+// crop top space on text elements - caused by line height
+
+@mixin lhCrop($line-height, $capital-letter: 1) {
+  &::before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: multiply(subtract($capital-letter,$line-height), divide($base-font-size,2));
+  }
+} 
+
+// FUNCTIONS
+
+@function summ($value1, $value2) {
+  @return $value1 + $value2;
+}
+
+@function subtract($value1, $value2) {
+  @return $value1 - $value2;
+}
+
+@function multiply($value1, $value2) {
+  @return $value1 * $value2;
+}  
+
+@function divide($value1, $value2) {
+  @return $value1 / $value2;
+}
+
+
+// VARIABLES
+  
+	// BASE FONT SIZE
+	$base-font-size:      18px; 
+	$text-increment:      3px;
+	$text-increment-small:1px;
+	
+	// Scaling increment on different screen sizes
+	$increment-desktop:   10px;
+	$increment-tablet:    8px;
+	$increment-phablet:   6px;
+	$increment-base:      4px;
+	
+	// FONT SIZE FOR HEADINGS
+
+	$h6-tablet:      summ($base-font-size, multiply($text-increment-small, 2));	
+	$h6-phablet:     summ($base-font-size, multiply($text-increment-small, 2));	
+	$h6-base:        summ($base-font-size, multiply($text-increment-small, 1));	
+
+	$h5-tablet:      summ($base-font-size, multiply($text-increment-small, 6));	
+	$h5-phablet:     summ($base-font-size, multiply($text-increment-small, 4));	
+	$h5-base:        summ($base-font-size, multiply($text-increment-small, 2));	
+
+	$h4-desktop:     summ($base-font-size, multiply($text-increment, 3));	
+	$h4-tablet:      summ($base-font-size, multiply($text-increment, 3));	
+	$h4-phablet:     summ($base-font-size, multiply($text-increment, 2));	
+	$h4-base:        summ($base-font-size, multiply($text-increment, 1));	
+	
+	$h3-desktop:     summ($h4-desktop, $increment-desktop);	
+	$h3-tablet:      summ($h4-tablet, $increment-tablet);	
+	$h3-phablet:     summ($h4-phablet, $increment-phablet);	
+	$h3-base:        summ($h4-base, $increment-base);
+
+	$h2-desktop:     summ($h4-desktop, multiply($increment-desktop,2));	
+	$h2-tablet:      summ($h4-tablet, multiply($increment-tablet,2));	
+	$h2-phablet:     summ($h4-phablet, multiply($increment-phablet,2));	
+	$h2-base:        summ($h4-base, multiply($increment-base,2));
+	
+	$h1-desktop:     summ($h4-desktop, multiply($increment-desktop,3));	
+	$h1-tablet:      summ($h4-tablet, multiply($increment-tablet,3));	
+	$h1-phablet:     summ($h4-phablet, multiply($increment-phablet,3));	
+	$h1-base:        summ($h4-base, multiply($increment-base,3));
+
+	// LINE HEIGHT
+	$line-height-body:    1.5;
+	$line-height-heading: 1.25;
+
+	// CAPITAL LETTER - used in combo with the lhCrop mixin
+	$capital-letter:      1;
+	
+	// ARTICLE
+	$line-height-multiplier: 1.05;
+	$text-vspace-multiplier: 1;
+	$text-body-line-height: multiply($line-height-body, $line-height-multiplier);
+	$text-heading-line-height: multiply($line-height-heading, $line-height-multiplier);
+
+	// SPACING
+	$space-xxxs:   multiply(0.25, $base-font-size);
+	$space-xs:     multiply(0.5, $base-font-size);
+	$space-sm:     multiply(0.75, $base-font-size);
+	$space-md:     multiply(1.25, $base-font-size);
+	$space-lg:     multiply(2, $base-font-size);
+
+	$text-padding: $space-sm;
+
+// UTILITIES
+
+	// FONT WEIGHT 
+	.lightest, 
+	.ultraLight, 
+	.thin     {font-weight: 100 !important;}
+	.lighter  {font-weight: 200 !important;}
+	.light    {font-weight: 300 !important;}
+	.normal   {font-weight: 400 !important;} 
+	.semiBold {font-weight: 500 !important;}
+	.bold     {font-weight: 600 !important;}
+	.bolder   {font-weight: 700 !important;}
+	.boldest  {font-weight: 800 !important;}
+	.ultraBold{font-weight: 900 !important;}
+
+	.weight-1 {font-weight: 100 !important;}
+	.weight-2 {font-weight: 200 !important;}
+	.weight-3 {font-weight: 300 !important;}
+	.weight-4 {font-weight: 400 !important;}
+	.weight-5 {font-weight: 500 !important;}
+	.weight-6 {font-weight: 600 !important;}
+	.weight-7 {font-weight: 700 !important;}
+	.weight-8 {font-weight: 800 !important;}
+	.weight-9 {font-weight: 900 !important;}
+
+	// HELPERS 
+	.italic { 
+		font-style: italic !important;
+	}
+	.underline {
+		text-decoration: underline;
+	}
+	.uppercase {
+		text-transform: uppercase !important;
+		letter-spacing: multiply(0.075, $base-font-size) !important;
+	}
+	.condense {
+		letter-spacing: multiply(-0.036, $base-font-size) !important;
+	}
+	.expand {
+		letter-spacing: multiply(0.25, $base-font-size) !important;
+	}
+	.truncate {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.fullWidth {
+		margin-left: calc(50% - 50vw) !important;
+		margin-right: calc(50% - 50vw) !important;
+		border-radius: 0 !important;
+	}
+	.rule {
+		margin-bottom: multiply(4, $base-font-size);
+	}
+	.rule:after {
+		content: '';
+		height: 4px;
+		width: 80%;
+		background: rgba(0,0,0,0.1);
+		bottom: multiply(-2, $base-font-size);
+		position: absolute;
+		left: 10%;
+		border-radius: 4px;
+	}
+
+// UTILITIES
+
+
+// TYPOGRAPHY
+
+	// Body Text 
+	.slides {
+		font-family: $body-font;
+		font-size: $base-font-size;
+		line-height: $line-height-body;
+	}
+	
+	// Font scaling classes 
+
+	p, .p			{
+		font-size: 18px; letter-spacing: -0.014em;
+
+		&.largest  {font-size: summ($base-font-size, multiply($text-increment, 3)); letter-spacing: -0.02em;}
+		&.larger   {font-size: summ($base-font-size, multiply($text-increment, 2)); letter-spacing: -0.019em}
+		&.large    {font-size: summ($base-font-size, $text-increment); letter-spacing: -0.011em}
+		&.small    {font-size: subtract($base-font-size, 2); letter-spacing: -0.011em}
+		&.smaller  {font-size: subtract($base-font-size, 4); letter-spacing: -0.006em;}
+		&.smallest {font-size: subtract($base-font-size, 6); letter-spacing: 0;}
+		&.micro    {font-size: subtract($base-font-size, 7);}
+	}
+
+
+
+	// Headings, Heading scaling classes 
+	.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+		line-height: $line-height-heading;
+		margin-bottom: $space-xxxs;
+		letter-spacing: -0.015em;
+	}
+	
+	.d1, .d2, .d3 {
+		@include lhCrop($line-height-heading, $capital-letter);
+	}
+	
+	.d1{
+		                               font-size: summ($h1-base, multiply($text-increment, 7));
+		@include media($phone, min){   font-size: summ($h1-phablet, multiply($text-increment, 6));}
+		@include media($tablet, min){  font-size: summ($h1-tablet, multiply($text-increment, 6));}
+		@include media($desktop, min){ font-size: summ($h1-desktop, multiply($text-increment, 6));}
+	}
+	
+	.d2{
+		                               font-size: summ($h1-base, multiply($text-increment, 6));
+		@include media($phone, min){   font-size: summ($h1-phablet, multiply($text-increment, 5));}
+		@include media($tablet, min){  font-size: summ($h1-tablet, multiply($text-increment, 4));}
+		@include media($desktop, min){ font-size: summ($h1-desktop, multiply($text-increment, 4));}
+	}
+	
+	.d3{
+		                               font-size: summ($h1-base, multiply($text-increment, 4));
+		@include media($phone, min){   font-size: summ($h1-phablet, multiply($text-increment, 3));}
+		@include media($tablet, min){  font-size: summ($h1-tablet, multiply($text-increment, 2));}
+		@include media($desktop, min){ font-size: summ($h1-desktop, multiply($text-increment, 2));}
+	}
+	
+	// .h1{
+	// 	                               font-size: $h1-base;
+	// 	@include media($phone, min){   font-size: $h1-phablet;}
+	// 	@include media($tablet, min){  font-size: $h1-tablet; }
+	// 	@include media($desktop, min){ font-size: $h1-desktop; }
+	// }
+	h1, .h1 {
+		            font-size: $h1-base;
+		            letter-spacing: -0.022em;
+		&.largest  {font-size: summ($h1-base, multiply($text-increment, 3));}
+		&.larger   {font-size: summ($h1-base, multiply($text-increment, 2));}
+		&.large    {font-size: summ($h1-base, multiply($text-increment, 1));}
+		&.small    {font-size: subtract($h1-base, multiply($text-increment, 1));}
+		&.smaller  {font-size: subtract($h1-base, multiply($text-increment, 2));}
+		&.smallest {font-size: subtract($h1-base, multiply($text-increment, 3));}
+		@include media($phone, min){
+			            font-size: $h1-phablet;
+			&.largest  {font-size: summ($h1-phablet, multiply($text-increment, 3));}
+			&.larger   {font-size: summ($h1-phablet, multiply($text-increment, 2));}
+			&.large    {font-size: summ($h1-phablet, multiply($text-increment, 1));}
+			&.small    {font-size: subtract($h1-phablet, multiply($text-increment, 1));}
+			&.smaller  {font-size: subtract($h1-phablet, multiply($text-increment, 2));}
+			&.smallest {font-size: subtract($h1-phablet, multiply($text-increment, 3));}
+		}
+		@include media($tablet, min){
+			            font-size: $h1-tablet;
+			&.largest  {font-size: summ($h1-tablet, multiply($text-increment, 3));}
+			&.larger   {font-size: summ($h1-tablet, multiply($text-increment, 2));}
+			&.large    {font-size: summ($h1-tablet, multiply($text-increment, 1));}
+			&.small    {font-size: subtract($h1-tablet, multiply($text-increment, 1));}
+			&.smaller  {font-size: subtract($h1-tablet, multiply($text-increment, 2));}
+			&.smallest {font-size: subtract($h1-tablet, multiply($text-increment, 3));}
+		}
+		@include media($desktop, min){
+			            font-size: $h1-desktop;
+			&.largest  {font-size: summ($h1-desktop, multiply($text-increment, 6));}
+			&.larger   {font-size: summ($h1-desktop, multiply($text-increment, 4));}
+			&.large    {font-size: summ($h1-desktop, multiply($text-increment, 2));}
+			&.small    {font-size: subtract($h1-desktop, multiply($text-increment, 2));}
+			&.smaller  {font-size: subtract($h1-desktop, multiply($text-increment, 4));}
+			&.smallest {font-size: subtract($h1-desktop, multiply($text-increment, 6));}
+		}
+	}
+	
+	h2, .h2 {
+		            font-size: $h2-base;
+		            letter-spacing: -0.021em;
+		&.largest  {font-size: summ($h2-base, multiply($text-increment, 3));}
+		&.larger   {font-size: summ($h2-base, multiply($text-increment, 2));}
+		&.large    {font-size: summ($h2-base, multiply($text-increment, 1));}
+		&.small    {font-size: subtract($h2-base, multiply($text-increment, 1));}
+		&.smaller  {font-size: subtract($h2-base, multiply($text-increment, 2));}
+		&.smallest {font-size: subtract($h2-base, multiply($text-increment, 3));}
+		@include media($phone, min){
+			            font-size: $h2-phablet;
+			&.largest  {font-size: summ($h2-phablet, multiply($text-increment, 3));}
+			&.larger   {font-size: summ($h2-phablet, multiply($text-increment, 2));}
+			&.large    {font-size: summ($h2-phablet, multiply($text-increment, 1));}
+			&.small    {font-size: subtract($h2-phablet, multiply($text-increment, 1));}
+			&.smaller  {font-size: subtract($h2-phablet, multiply($text-increment, 2));}
+			&.smallest {font-size: subtract($h2-phablet, multiply($text-increment, 3));}
+		}
+		@include media($tablet, min){
+			            font-size: $h2-tablet;
+			&.largest  {font-size: summ($h2-tablet, multiply($text-increment, 3));}
+			&.larger   {font-size: summ($h2-tablet, multiply($text-increment, 2));}
+			&.large    {font-size: summ($h2-tablet, multiply($text-increment, 1));}
+			&.small    {font-size: subtract($h2-tablet, multiply($text-increment, 1));}
+			&.smaller  {font-size: subtract($h2-tablet, multiply($text-increment, 2));}
+			&.smallest {font-size: subtract($h2-tablet, multiply($text-increment, 3));}
+		}
+		@include media($desktop, min){
+			            font-size: $h2-desktop;
+			&.largest  {font-size: summ($h2-desktop, multiply($text-increment, 5));}
+			&.larger   {font-size: summ($h2-desktop, multiply($text-increment, 3.32));}
+			&.large    {font-size: summ($h2-desktop, multiply($text-increment, 1.66));}
+			&.small    {font-size: subtract($h2-desktop, multiply($text-increment, 1.66));}
+			&.smaller  {font-size: subtract($h2-desktop, multiply($text-increment, 3.32));}
+			&.smallest {font-size: subtract($h2-desktop, multiply($text-increment, 5));}
+		}
+	}
+	
+	// .h3, .big{
+	// 	                               font-size: $h3-base;
+	// 	@include media($phone, min){   font-size: $h3-phablet;}
+	// 	@include media($tablet, min){  font-size: $h3-tablet; }
+	// 	@include media($desktop, min){ font-size: $h3-desktop; }
+	// }
+	h3, .h3 {
+		            font-size: $h3-base;
+		            letter-spacing: -0.020em;
+		&.largest  {font-size: summ($h3-base, multiply($text-increment, 3));}
+		&.larger   {font-size: summ($h3-base, multiply($text-increment, 2));}
+		&.large    {font-size: summ($h3-base, multiply($text-increment, 1));}
+		&.small    {font-size: subtract($h3-base, multiply($text-increment, 1));}
+		&.smaller  {font-size: subtract($h3-base, multiply($text-increment, 2));}
+		&.smallest {font-size: subtract($h3-base, multiply($text-increment, 3));}
+		@include media($phone, min){
+			            font-size: $h3-phablet;
+			&.largest  {font-size: summ($h3-phablet, multiply($text-increment, 3));}
+			&.larger   {font-size: summ($h3-phablet, multiply($text-increment, 2));}
+			&.large    {font-size: summ($h3-phablet, multiply($text-increment, 1));}
+			&.small    {font-size: subtract($h3-phablet, multiply($text-increment, 1));}
+			&.smaller  {font-size: subtract($h3-phablet, multiply($text-increment, 2));}
+			&.smallest {font-size: subtract($h3-phablet, multiply($text-increment, 3));}
+		}
+		@include media($tablet, min){
+			            font-size: $h3-tablet;
+			&.largest  {font-size: summ($h3-tablet, multiply($text-increment, 3));}
+			&.larger   {font-size: summ($h3-tablet, multiply($text-increment, 2));}
+			&.large    {font-size: summ($h3-tablet, multiply($text-increment, 1));}
+			&.small    {font-size: subtract($h3-tablet, multiply($text-increment, 1));}
+			&.smaller  {font-size: subtract($h3-tablet, multiply($text-increment, 2));}
+			&.smallest {font-size: subtract($h3-tablet, multiply($text-increment, 3));}
+		}
+		@include media($desktop, min){
+			            font-size: $h3-desktop;
+			&.largest  {font-size: summ($h3-desktop, multiply($text-increment, 4));}
+			&.larger   {font-size: summ($h3-desktop, multiply($text-increment, 2.66));}
+			&.large    {font-size: summ($h3-desktop, multiply($text-increment, 1.33));}
+			&.small    {font-size: subtract($h3-desktop, multiply($text-increment, 1.33));}
+			&.smaller  {font-size: subtract($h3-desktop, multiply($text-increment, 2.66));}
+			&.smallest {font-size: subtract($h3-desktop, multiply($text-increment, 4));}
+		}
+	}
+	
+	// .h4, .hero{
+	// 	                               font-size: $h4-base;
+	// 	@include media($phone, min){   font-size: $h4-phablet;}
+	// 	@include media($tablet, min){  font-size: $h4-tablet; }
+	// }
+	h4, .h4 {
+		            font-size: $h4-base;
+		            letter-spacing: -0.015em;
+		&.largest  {font-size: summ($h4-base, multiply($text-increment, 3));}
+		&.larger   {font-size: summ($h4-base, multiply($text-increment, 2));}
+		&.large    {font-size: summ($h4-base, multiply($text-increment, 1));}
+		&.small    {font-size: subtract($h4-base, multiply($text-increment, 1));}
+		&.smaller  {font-size: subtract($h4-base, multiply($text-increment, 2));}
+		&.smallest {font-size: subtract($h4-base, multiply($text-increment, 3));}
+		@include media($phone, min){
+			            font-size: $h4-phablet;
+			&.largest  {font-size: summ($h4-phablet, multiply($text-increment, 3));}
+			&.larger   {font-size: summ($h4-phablet, multiply($text-increment, 2));}
+			&.large    {font-size: summ($h4-phablet, multiply($text-increment, 1));}
+			&.small    {font-size: subtract($h4-phablet, multiply($text-increment, 1));}
+			&.smaller  {font-size: subtract($h4-phablet, multiply($text-increment, 2));}
+			&.smallest {font-size: subtract($h4-phablet, multiply($text-increment, 3));}
+		}
+		@include media($tablet, min){
+			            font-size: $h4-tablet;
+			&.largest  {font-size: summ($h4-tablet, multiply($text-increment, 3));}
+			&.larger   {font-size: summ($h4-tablet, multiply($text-increment, 2));}
+			&.large    {font-size: summ($h4-tablet, multiply($text-increment, 1));}
+			&.small    {font-size: subtract($h4-tablet, multiply($text-increment, 1));}
+			&.smaller  {font-size: subtract($h4-tablet, multiply($text-increment, 2));}
+			&.smallest {font-size: subtract($h4-tablet, multiply($text-increment, 3));}
+		}
+	}
+
+	// .h5, h5{
+	// 	                               font-size: $h5-base;
+	// 	@include media($phone, min){   font-size: $h5-phablet;}
+	// 	@include media($tablet, min){  font-size: $h5-tablet; }
+	// }
+	h5, .h5 {
+		            font-size: $h5-base;
+		            letter-spacing: -0.015em;
+		&.largest  {font-size: summ($h5-base, multiply($text-increment, 3));}
+		&.larger   {font-size: summ($h5-base, multiply($text-increment, 2));}
+		&.large    {font-size: summ($h5-base, multiply($text-increment, 1));}
+		&.small    {font-size: subtract($h5-base, multiply($text-increment, 1));}
+		&.smaller  {font-size: subtract($h5-base, multiply($text-increment, 2));}
+		&.smallest {font-size: subtract($h5-base, multiply($text-increment, 3));}
+		@include media($phone, min){
+			            font-size: $h5-phablet;
+			&.largest  {font-size: summ($h5-phablet, multiply($text-increment, 3));}
+			&.larger   {font-size: summ($h5-phablet, multiply($text-increment, 2));}
+			&.large    {font-size: summ($h5-phablet, multiply($text-increment, 1));}
+			&.small    {font-size: subtract($h5-phablet, multiply($text-increment, 1));}
+			&.smaller  {font-size: subtract($h5-phablet, multiply($text-increment, 2));}
+			&.smallest {font-size: subtract($h5-phablet, multiply($text-increment, 3));}
+		}
+		@include media($tablet, min){
+			            font-size: $h5-tablet;
+			&.largest  {font-size: summ($h5-tablet, multiply($text-increment, 3));}
+			&.larger   {font-size: summ($h5-tablet, multiply($text-increment, 2));}
+			&.large    {font-size: summ($h5-tablet, multiply($text-increment, 1));}
+			&.small    {font-size: subtract($h5-tablet, multiply($text-increment, 1));}
+			&.smaller  {font-size: subtract($h5-tablet, multiply($text-increment, 2));}
+			&.smallest {font-size: subtract($h5-tablet, multiply($text-increment, 3));}
+		}
+	}
+
+	// .h6, h6{
+	// 	                               font-size: $h6-base;
+	// 	@include media($phone, min){   font-size: $h6-phablet;}
+	// 	@include media($tablet, min){  font-size: $h6-tablet; }
+	// }
+	h6, .h6 {
+		            font-size: $h6-base;
+		            letter-spacing: -0.015em;
+		&.largest  {font-size: summ($h6-base, multiply($text-increment, 3));}
+		&.larger   {font-size: summ($h6-base, multiply($text-increment, 2));}
+		&.large    {font-size: summ($h6-base, multiply($text-increment, 1));}
+		&.small    {font-size: subtract($h6-base, multiply($text-increment, 1));}
+		&.smaller  {font-size: subtract($h6-base, multiply($text-increment, 2));}
+		&.smallest {font-size: subtract($h6-base, multiply($text-increment, 3));}
+		@include media($phone, min){
+			            font-size: $h6-phablet;
+			&.largest  {font-size: summ($h6-phablet, multiply($text-increment, 3));}
+			&.larger   {font-size: summ($h6-phablet, multiply($text-increment, 2));}
+			&.large    {font-size: summ($h6-phablet, multiply($text-increment, 1));}
+			&.small    {font-size: subtract($h6-phablet, multiply($text-increment, 1));}
+			&.smaller  {font-size: subtract($h6-phablet, multiply($text-increment, 2));}
+			&.smallest {font-size: subtract($h6-phablet, multiply($text-increment, 3));}
+		}
+		@include media($tablet, min){
+			            font-size: $h6-tablet;
+			&.largest  {font-size: summ($h6-tablet, multiply($text-increment, 3));}
+			&.larger   {font-size: summ($h6-tablet, multiply($text-increment, 2));}
+			&.large    {font-size: summ($h6-tablet, multiply($text-increment, 1));}
+			&.small    {font-size: subtract($h6-tablet, multiply($text-increment, 1));}
+			&.smaller  {font-size: subtract($h6-tablet, multiply($text-increment, 2));}
+			&.smallest {font-size: subtract($h6-tablet, multiply($text-increment, 3));}
+		}
+	}
+
+	a {
+		cursor: pointer;
+		color: inherit;
+		text-decoration: none;
+		transition: 0.35s;
+
+		&:hover {
+			transition: 0.15s;
+			opacity: 0.8;
+		}
+	}
+
+	ol, p, blockquote, q {
+		margin-bottom: 1em;
+	}
+
+// TYPOGRAPHY -//
+
+
+// ARTICLE
+article, .text {
+
+	.h1, h1 {
+		line-height: $text-heading-line-height;
+		margin-bottom: multiply($space-xxxs, $text-vspace-multiplier);
+	}
+
+	.h2, h2, .h3, h3, .h4, h4, .h5, h5, .h6, h6 {
+		line-height: $text-heading-line-height;
+		margin-bottom: multiply($space-xxxs, $text-vspace-multiplier);
+		margin-top: multiply($space-sm, $text-vspace-multiplier);
+	}
+
+	p, blockquote, q, ul li, ol li {
+		line-height: $text-body-line-height;
+	}
+
+	ul, ol, p, blockquote, q {
+		margin-bottom: multiply($space-sm, $text-vspace-multiplier);
+	}
+
+	ul, ol {
+		padding-left: $space-lg;
+	}
+
+	ul li {
+		list-style-type: disc;
+	}
+
+	ol li {
+		list-style-type: decimal;
+	}
+
+	em {
+		font-style: italic;
+	}
+
+	blockquote {
+		font-size: multiply($base-font-size, 1.1);
+		font-weight: bold;
+		padding: $space-xs 0 $space-xs $space-lg;
+		border-left: 4px solid #000;
+		margin: multiply($space-lg, $text-vspace-multiplier);
+		background: #f9f9f9;
+		quotes: "\201C""\201D""\2018""\2019";
+	}
+	blockquote p {
+		display: inline;
+	}
+
+	q {
+		font-size: multiply($base-font-size, 1.1);
+		quotes: "“" "”" "‘" "’";
+		display: block;
+		font-weight: bold;
+		margin: multiply($space-lg, $text-vspace-multiplier) $space-lg;
+	}
+	q:before {content: open-quote;}
+	q:after {content: close-quote;}
+
+	hr {
+		background: #000;
+		height: 1px;
+		margin: multiply($space-lg, $text-vspace-multiplier) auto;
+	}
+
+	> *:first-child {
+		margin-top: 0;
+	}
+
+	> *:last-child {
+		margin-bottom: 0;
+	}
+
+	a {
+		cursor: pointer;
+		color: inherit;
+		text-decoration: none;
+		transition: 0.35s;
+		text-decoration: underline;
+
+		&:hover {
+				transition: 0.15s;
+				opacity: 0.8;
+			}
+	}
+
+	// Code 
+	code {
+		display: block;
+		background: #1B1A24;
+		color: #FFF;
+		padding: $space-lg;
+		margin: $space-lg 0;
+	}
+
+	// Images 
+	figure {
+		margin: multiply($space-lg, $text-vspace-multiplier);
+	}
+
+	img {
+		margin: auto;
+		text-align: center;
+	}
+
+	figcaption {
+		font-size: subtract($base-font-size, multiply($text-increment, 2));
+		opacity: .8;
+		margin-top: multiply($space-sm, $text-vspace-multiplier);
+	}
+
+}
+// ARTICLE -//
