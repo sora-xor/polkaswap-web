@@ -9,3 +9,11 @@
 	}
 	
 }
+a.pink:hover {
+	background: #fff!important;
+	color: #ed145b!important;
+}
+a.white:hover {
+	background: #4622a8!important;
+	color: #fff!important;
+}
