@@ -1,3 +1,12 @@
+a.pink:hover {
+	background: #fff!important;
+	color: #ed145b!important;
+}
+a.white:hover {
+	background: #4622a8!important;
+	color: #fff!important;
+}
+
 .mobile-hidden {
 		display: block;
 	}
@@ -7,13 +16,8 @@
 	.mobile-hidden {
 		display: none;
 	}
+	.mobile-medium {
+		font-size: .9em!important;
+	}
 	
-}
-a.pink:hover {
-	background: #fff!important;
-	color: #ed145b!important;
-}
-a.white:hover {
-	background: #4622a8!important;
-	color: #fff!important;
 }
