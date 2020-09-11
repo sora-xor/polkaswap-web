@@ -1,10 +1,14 @@
-a.pink:hover {
+a.pink:hover, a.purple:hover {
 	background: #fff!important;
 	color: #ed145b!important;
 }
 a.white:hover {
 	background: #4622a8!important;
 	color: #fff!important;
+}
+a.link {
+	text-decoration: underline;
+	color: #fe256c;
 }
 
 .mobile-hidden {
