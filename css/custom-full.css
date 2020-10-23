@@ -54,7 +54,7 @@ a.link {
 	color: #ed145b;font-weight:600;font-size:1.125em;
 }
 .headline2 {
-	font-weight:600;font-size:1.5em;
+	font-weight:600;font-size:1.5em !important;
 }
 .iconArrowDown{width:18px;height:16px;margin:0 0 0 10px;}
 .svgArrowTop{width:18px;height:18px;margin-top:1em;}
