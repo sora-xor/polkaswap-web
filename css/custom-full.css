@@ -25,3 +25,49 @@ a.link {
 	}
 	
 }
+
+.roadmapIcon {
+	width:24px;height:24px;vertical-align:text-bottom;fill:#ffaad1;
+}
+.opacity-75 {
+	color: #bbb;
+}
+.span-small {
+	display:block;margin:0.5em 0;font-weight:300;
+}
+.fw100 {
+	font-weight:100;
+}
+.fw300 {
+	font-weight:300;
+}
+.fw600 {
+	font-weight:600;
+}
+.web3svg {
+	width:175px;height:61px;margin:1em 0;
+}
+.vline {
+	margin:-16px 0 -12px;padding:0;color:#fff8;font-size:1.5em;font-weight:100;
+}
+.qRoadmap {
+	color: #ed145b;font-weight:600;font-size:1.125em;
+}
+.headline2 {
+	font-weight:600;font-size:1.5em;
+}
+.iconArrowDown{width:18px;height:16px;margin:0 0 0 10px;}
+.svgArrowTop{width:18px;height:18px;margin-top:1em;}
+.mp0{margin:0;padding:0;}
+.hw18px{width:18px;height:18px}
+.svgPolkaswap{width:250px;height:67px;margin:1em 0;}
+.bgSidebar{background:rgba(11,9,53,.95);}
+.svgPolkaswapM{width:200px;height:53px;margin:30px 0 0;}
+.svgWeb3M{width:150px;height:52px;margin:2em 0;}
+.tdu{text-decoration:underline;}
+.z11{z-index:11;}
+.pb15px{padding-bottom:15px;}
+.lh2em{line-height:2em;}
+.bg7{background-image:url(../assets/img/bg-7.jpg?3)}
+.bg4{background-image:url(../assets/img/bg-4.jpg?0)}
+.bg3{background-image:url(../assets/img/bg-5.jpg?0)}
