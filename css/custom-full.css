@@ -1,10 +1,18 @@
-a.pink:hover, a.purple:hover {
-	background: #fff!important;
+a.pink:hover {
+	background: #ddd!important;
 	color: #ed145b!important;
+}
+a.purple:hover {
+	background: #ddd!important;
+	color: #9C27B0!important;
+}
+a.blue:hover {
+	background: #ddd!important;
+	color: #2196F3!important;
 }
 a.white:hover {
 	background: #4622a8!important;
-	color: #fff!important;
+	color: #ddd!important;
 }
 a.link {
 	text-decoration: underline;
@@ -68,6 +76,6 @@ a.link {
 .z11{z-index:11;}
 .pb15px{padding-bottom:15px;}
 .lh2em{line-height:2em;}
-.bg7{background-image:url(../assets/img/bg-7.jpg?3)}
-.bg4{background-image:url(../assets/img/bg-4.jpg?0)}
-.bg3{background-image:url(../assets/img/bg-5.jpg?0)}
+.bg7{background-image:url(../assets/img/bg-7.jpg?5)}
+.bg4{background-image:url(../assets/img/bg-4.jpg?5)}
+.bg3{background-image:url(../assets/img/bg-5.jpg?5)}
