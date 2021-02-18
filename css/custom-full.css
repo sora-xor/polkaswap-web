@@ -1,3 +1,30 @@
+.cc-window {
+	position: fixed;
+    bottom: 0;
+    z-index: 999 !important;
+    background-color: #000;
+    opacity: .75;
+    padding: 25px;
+    width: 100%;
+    text-align: center;
+	color: #fff;
+}
+.cc-link {
+	color: #ed145b;
+}
+.cc-btn {
+	padding: 8px 20px;
+    margin-top: 10px;
+    background-color: #fff;
+    display: inline-block;
+	border-radius: 30px;
+}
+.cc-btn:hover {
+	text-decoration: none!important;
+	background-color: #ed145b!important;
+	color: #fff!important;
+}
+
 a.pink:hover {
 	background: #ddd!important;
 	color: #ed145b!important;
